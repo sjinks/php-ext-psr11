@@ -20,8 +20,16 @@ matrix:
   allow_failures:
     - php: nightly
 
+addons:
+  apt:
+    packages:
+      valgrind
+
 before_script:
-  - phpize && ./configure --silent
+  - phpize && ./configure --silent && make --silent && make install
 
 script:
-  - make
+  - .travis/run_php_tests.sh
+
+after_failure:
+  - .travis/after_failure.sh
