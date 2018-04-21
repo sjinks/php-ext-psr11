@@ -1,0 +1,1 @@
+<?php if (!extension_loaded("psr11")) die("skip"); ?>
